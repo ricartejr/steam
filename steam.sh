@@ -8,13 +8,13 @@
 # http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=3
 # http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=4
 # http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=5
-
+  http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=2
 # LINK COTACAO DO DOLAR ATUALIZADO
 # https://es.finance.yahoo.com/q?s=USDBRL=X
 
 clear
 echo "Aguarde fazendo download...#"
-sleep 1 ; wget -qi links.txt -O steam && echo "# '----[ Download (100 %) ]"
+sleep 1 ; wget -q -i links.txt -O steam && echo "# '----[ Download (100 %) ]"
 echo "Atualizando cotacao"
 sleep 1 ; grep -Eo "yfs_l10_usdbrl\=x.{8}</span>" steam 2>&1 | cut -d\> -f2 | sed 's/<\/span$//g ; s/^.*/[ Dolar = & ]/g' > cambio.txt && echo " '---- `cat cambio.txt`"
 echo "Verificando descontos"

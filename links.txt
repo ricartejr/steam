@@ -1,6 +1,6 @@
-http://store.steampowered.com/search/?specials=1&os=win#sort_by=Reviews_DESC&specials=1&page=1
-http://store.steampowered.com/search/?specials=1&os=win#sort_by=Reviews_DESC&specials=1&page=2
-http://store.steampowered.com/search/?specials=1&os=win#sort_by=Reviews_DESC&specials=1&page=3
-http://store.steampowered.com/search/?specials=1&os=win#sort_by=Reviews_DESC&specials=1&page=4
-http://store.steampowered.com/search/?specials=1&os=win#sort_by=Reviews_DESC&specials=1&page=5
+http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=1
+http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=2
+http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=3
+http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=4
+http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=5
 https://es.finance.yahoo.com/q?s=USDBRL=X
