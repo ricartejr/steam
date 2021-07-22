@@ -9,8 +9,11 @@
 # http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=4
 # http://store.steampowered.com/search/?sort_by=&sort_order=0&specials=1&page=5
 
-### CORES ###
 
+# grep -Eo "\-(.|..|...)%" steam
+
+### CORES ###
+today=`date +%d-%m-%Y-%H-%M-%S`
 BREDTEXTWHITE="\e[41;37;01m"
 BREDTEXTWHITEP="\e[41;37;05m"
 FIMCOR="\e[m"
@@ -22,11 +25,11 @@ sleep 1 ; wget -q -i links.txt -O steam && echo -e "\t Download finalizado com s
 echo "+-----------------------------------------------+"
 echo -e "\t $BREDTEXTWHITE Verificando descontos $FIMCOR"
 # sleep 1 ; grep -Eo "\-..\%" steam 2>&1 | sed 's/-..%/[ & ]/g' > descontos.txt && echo -e "\t Descontos encontrados ($BREDTEXTWHITEP`cat descontos.txt | wc -l`$FIMCOR)"
-sleep 1 ; grep -Eo "\-.*\%" steam 2>&1 | grep -v "\-tooltip" | sed 's/-.*%/[ & ]/g' | sed 's/-.%/& /g' > descontos.txt && echo -e "\t Descontos encontrados ($BREDTEXTWHITEP`cat descontos.txt | wc -l`$FIMCOR)"
+# sleep 1 ; grep -Eo "\-.*\%" steam 2>&1 | grep -v "\-tooltip" | sed 's/-.*%/[ & ]/g' | sed 's/-.%/& /g' > descontos.txt && echo -e "\t Descontos encontrados ($BREDTEXTWHITEP`cat descontos.txt | wc -l`$FIMCOR)"
+sleep 1 ; grep -Eo "\-(.|..|...)%" steam | sed 's/-.*%/[ & ]/g ; s/-.%/& /g' > descontos.txt && echo -e "\t Descontos encontrados ($BREDTEXTWHITEP`cat descontos.txt | wc -l`$FIMCOR)"
 sleep 1 ; grep "<span class=\"title\">" steam 2>&1 | sed 's/^.*<span class=\"title\">/[ /g ; s/<\/span*./ ]/g' | sed 's/[®,–,]/ /g' > nomes.txt && echo -e "\t Atualizados ($BREDTEXTWHITE`cat nomes.txt | wc -l`$FIMCOR) nomes"
 sleep 1 ; grep "strike" steam 2>&1 | cut -d">" -f3,6 | sed 's/^/[ &/g ; s/<\/strike>/	= /g ; s/	*<\/div$/	]/g' | expand -t 10 > valor.txt && echo -e "\t Valores atualizados ($BREDTEXTWHITE`cat valor.txt | wc -l`$FIMCOR)"
 sleep 1 ; paste -d "+" descontos.txt valor.txt nomes.txt 2>&1 > tabeladepreco.txt && echo -e "\t Tabela de descontos criada ($BREDTEXTWHITE`cat tabeladepreco.txt | wc -l`$FIMCOR)"
-sleep 1 ; `sort -nr -t\- -k2 tabeladepreco.txt > tabeladeprecofinal.txt`
-sleep 1 ; echo -e "\n Atualizado - `date +'%A, %d de %B de %Y'` \n" >> tabeladeprecofinal.txt
+sleep 1 ; `sort -nr -t\- -k2 tabeladepreco.txt > ${today}-tabeladeprecofinal.txt`
 sleep 1 ; rm descontos.txt valor.txt nomes.txt tabeladepreco.txt steam && echo -e "\n\t $BREDTEXTWHITEP Arquivos desnecessários apagado com sucesso. $FIMCOR\n"
 exit
